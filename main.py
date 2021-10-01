@@ -2,7 +2,9 @@ from time import sleep
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.keys import Keys
+import language
 
+LANG = language.setLang()
 INSTAGRAM_URL = 'https://www.instagram.com'
 DRIVER_PATH = 'chromedriver/chromedriver.exe'
 # i've installed Chrome version 94. Please download chromedriver for your chrome version
@@ -29,9 +31,10 @@ class Bot:
         sleep(5)
 
         # now, 3 pop up appears... have to say no :)
-        self.driver.find_element_by_xpath("//button[text()='Ahora no']").click()
+        
+        self.driver.find_element_by_xpath("//button[text()='{}']".format(LANG["popup"])).click()
         sleep(3)
-        self.driver.find_element_by_xpath("//button[text()='Ahora no']").click()
+        self.driver.find_element_by_xpath("//button[text()='{}']".format(LANG["popup"])).click()
         sleep(3)
         self.driver.get(INSTAGRAM_URL+"/{}".format(targetId))
         print()
