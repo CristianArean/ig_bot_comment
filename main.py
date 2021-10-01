@@ -6,7 +6,7 @@ from re import subn
 from decimal import Decimal
 
 # i've installed Chrome version 94. Please download chromedriver for your chrome version
-chrome_driver = webdriver.Chrome("chromedriver.exe")
+chrome_driver = webdriver.Chrome("chromedriver/chromedriver.exe")
 insta_url = 'https://www.instagram.com'
 
 class Bot:
@@ -19,4 +19,14 @@ class Bot:
         self.driver.find_element_by_xpath("//input[@name=\"password\"]").send_keys(psw)
         self.driver.find_element_by_xpath("//button[@type=\"submit\"]").click()
         sleep(5)
-Bot('test','pswtest','agustingrigaliunas','hi')
+
+        # now, 3 pop up appears... have to say no :)
+        self.driver.find_element_by_xpath("//button[text()='Ahora no']").click()
+        sleep(3)
+        self.driver.find_element_by_xpath("//button[text()='Ahora no']").click()
+        sleep(3)
+        self.driver.get(insta_url+"/{}".format(targetId))
+        sleep(3)
+
+
+Bot('agustingrigaliunas','udontwannaseemypasswordright?','agustingrigaliunas','hi')
